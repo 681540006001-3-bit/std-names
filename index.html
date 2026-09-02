@@ -1,0 +1,49 @@
+---
+# บรรทัดขีดสามขีดนี้จำเป็น เป็นสัญญาณให้ GitHub Pages ประมวลผลไฟล์นี้
+---
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ผนังห้องเรียน</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="head">
+    <h1>ผนังห้องเรียน</h1>
+    <p>คลิกรหัสนักศึกษาเพื่อเปิดหน้าเว็บของแต่ละคน</p>
+  </header>
+
+  <main>
+    <!--
+      ส่วนนี้ GitHub Pages จะไล่อ่านไฟล์ในโฟลเดอร์ students/ ให้เอง
+      ทุกครั้งที่มีการ merge ไฟล์ใหม่เข้ามา รายชื่อจะเพิ่มขึ้นอัตโนมัติ
+    -->
+    {% assign pages = site.static_files
+        | where_exp: "f", "f.path contains '/students/'"
+        | where_exp: "f", "f.extname == '.html'"
+        | sort: "name" %}
+
+    <p class="count">{{ pages | size }} คนบนผนัง</p>
+
+    <ul class="grid">
+      {% for f in pages %}
+        <li>
+          <a href="{{ f.path | relative_url }}">{{ f.basename }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% if pages.size == 0 %}
+      <p class="empty">ยังไม่มีใครบนผนัง สร้างไฟล์แรกใน students/ ได้เลย</p>
+    {% endif %}
+  </main>
+
+  <footer class="foot">
+    <p>เพิ่มชื่อตัวเอง: สร้างไฟล์ <code>students/รหัสนักศึกษา.html</code> แล้วเปิด Pull Request</p>
+  </footer>
+
+</body>
+</html>

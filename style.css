@@ -1,0 +1,93 @@
+/* สไตล์ของหน้ารวมรายชื่อเท่านั้น
+   หน้าเว็บของนักศึกษาแต่ละคนมีสไตล์ของตัวเองอยู่ในไฟล์ตัวเอง */
+
+:root {
+  --bg:    #0d1c18;
+  --panel: #12241f;
+  --line:  #23423a;
+  --gold:  #c9a227;
+  --text:  #e6ece8;
+  --muted: #7d948b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 clamp(1rem, 5vw, 3rem) 4rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Sans Thai", -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+.head {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 5rem) 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.head h1 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  font-weight: 600;
+}
+
+.head p { margin: 0; color: var(--muted); }
+
+main { max-width: 60rem; margin: 0 auto; }
+
+.count {
+  margin: 1.5rem 0 1rem;
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ตารางรายชื่อ ปรับจำนวนคอลัมน์ตามความกว้างจอเอง */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid a {
+  display: block;
+  padding: 1rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--panel);
+  color: var(--gold);
+  font-family: ui-monospace, "Courier New", monospace;
+  text-decoration: none;
+}
+
+.grid a:hover { border-color: var(--gold); }
+
+.grid a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.empty {
+  padding: 3rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 3px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.foot {
+  max-width: 60rem;
+  margin: 3.5rem auto 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+code { color: var(--gold); font-family: ui-monospace, "Courier New", monospace; }
